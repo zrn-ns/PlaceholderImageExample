@@ -112,9 +112,7 @@ class PlaceholderImageProtocol: URLProtocol {
 // UIColorの16進数表現から初期化
 private extension UIColor {
     convenience init(hex: String) {
-        let scanner = Scanner(string: hex)
-        var hexNumber: UInt64 = 0
-        scanner.scanHexInt64(&hexNumber)
+        let hexNumber = Int(hex, radix: 16) ?? 0
 
         let r = CGFloat((hexNumber & 0xff0000) >> 16) / 255
         let g = CGFloat((hexNumber & 0x00ff00) >> 8) / 255
